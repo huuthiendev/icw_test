@@ -1,0 +1,9 @@
+.chat-list-container {
+  height: 85%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-content: flex-start;
+  margin-top: 10px;
+}
