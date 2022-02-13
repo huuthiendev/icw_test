@@ -4,7 +4,6 @@ import "./styles.css"
 import ChatBubble from "../../../../components/ChatBubble/ChatBubble";
 
 const MessageList = React.memo(({ messages, userInfo }) => {
-  console.log('message: ', messages);
   const messagesEndRef = useRef(null);
 
   useEffect(() => {

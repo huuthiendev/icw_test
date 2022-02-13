@@ -3,6 +3,7 @@ import { Container, Row, Col, Spinner } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import socketIOClient from "socket.io-client";
 import sailsIOClient from "sails.io.js";
+import Swal from "sweetalert2";
 
 import ChatHeader from "./sections/ChatHeader/ChatHeader";
 import MessageList from "./sections/MessageList/MessageList";
@@ -39,10 +40,20 @@ const ChatRoom = ({ location }) => {
           setConnected(true);
         }
         else if (data.errorCode) {
-          alert(data.message);
+          Swal.fire({
+            text: data.message,
+            icon: "warning",
+            confirmButtonColor: "#5DB075",
+          });
           history.push("/");
         }
-        else alert("Cannot connect to the server...");
+        else {
+          Swal.fire({
+            text: "Cannot connect to the server...",
+            icon: "warning",
+            confirmButtonColor: "#5DB075",
+          });
+        }
       });
     }
   }, [userInfo]);
@@ -51,7 +62,7 @@ const ChatRoom = ({ location }) => {
     if (isConnected) {
       // Listen message from socket room
       io.socket.on(Constants.EVENT_INCOMING_MESSAGE, (entry) => {
-        console.log('Incoming message: ', entry.text);
+        console.log("Incoming message: ", entry.text);
         let temp = messages;
         temp.push(entry);
         setMessages([...temp]);
