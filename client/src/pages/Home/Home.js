@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import "./styles.css";
 import Constants from "../../utils/Constants";
 import queryString from 'query-string';
+import Swal from 'sweetalert2';
 
 const Home = ({ location }) => {
   const [username, setUsername] = useState('');
@@ -39,7 +40,13 @@ const Home = ({ location }) => {
     }).then(data => data.json())
       .then(data => {
         setLoading(false);
-        if (data.errorCode) alert(data.message);
+        if (data.errorCode) {
+          Swal.fire({
+            text: data.message,
+            icon: 'warning',
+            confirmButtonColor: '#5DB075',
+          });
+        }
         else history.push({ pathname: "/chat-room", userInfo });
       });
   }
