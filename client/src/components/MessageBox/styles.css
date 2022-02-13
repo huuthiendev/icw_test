@@ -1,0 +1,33 @@
+.message-box {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.message-box input {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 100px;
+  padding: 10px 50px 10px 20px;
+  box-sizing: border-box;
+  outline: none;
+
+  background-color: #F6F6F6;
+  font-weight: 500;
+  opacity: 0.5;
+}
+
+.message-box button {
+  position: absolute;
+  right: 6px;
+  top: 5px;
+  bottom: 5px;
+  border: 0;
+  background: #5DB075;
+  color: #fff;
+  outline: none;
+  margin: 0;
+  padding: 0 10px;
+  border-radius: 50%;
+  z-index: 2;
+}

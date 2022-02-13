@@ -1,0 +1,86 @@
+.bubble-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.bubble-container-right {
+  justify-content: flex-end;
+}
+
+.bubble {
+  margin: 0 5px 34px 5px;
+  position: relative;
+  max-width: 250px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.bubble-right {
+  background-color: #5DB075;
+  color: #ffff;
+}
+
+.bubble-right:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: auto;
+  right: 0px;
+  top: auto;
+  bottom: -18px;
+  border: 22px solid;
+  border-color: transparent #5DB075 transparent transparent;
+}
+
+.bubble-left {
+  background-color: #F6F6F6;
+  color: black;
+  border: 1px #E8E8E8 solid;
+}
+
+.bubble-left:before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -1px;
+  right: auto;
+  top: auto;
+  bottom: -21px;
+  border: 20px solid;
+  border-color: transparent transparent transparent #E8E8E8;
+}
+
+.bubble-left:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 0px;
+  right: auto;
+  top: auto;
+  bottom: -18.5px;
+  border: 20px solid;
+  border-color: transparent transparent transparent #F6F6F6;
+}
+
+.message-text {
+  padding: 1em;
+  text-align: left;
+  line-height: 1.5em;
+  word-break: break-all;
+}
+
+.message-text p {
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+
+.message-time {
+  font-size: 8pt;
+  color: #8c8c8c;
+  margin-left: 7px;
+  margin-top: 5px;
+}
