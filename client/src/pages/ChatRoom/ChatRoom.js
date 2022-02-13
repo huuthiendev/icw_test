@@ -3,6 +3,7 @@ import { Container, Row, Col, Spinner } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import socketIOClient from "socket.io-client";
 import sailsIOClient from "sails.io.js";
+import Swal from "sweetalert2";
 
 import ChatHeader from "./sections/ChatHeader/ChatHeader";
 import MessageList from "./sections/MessageList/MessageList";
