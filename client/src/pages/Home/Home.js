@@ -11,11 +11,13 @@ const Home = ({ location }) => {
   const [isLoading, setLoading] = useState(false);
   const history = useHistory();
   const [isDirectRoomId, setIsDirectRoomId] = useState(false);
+  const [isValidated, setIsValidated] = useState(false);
 
   const handleJoinRoom = (event) => {
     event.preventDefault();
-    if (!username || !roomId) {
-      alert('Please enter your username and room id before proceeding.');
+    setIsValidated(true);
+    if (event.currentTarget.checkValidity() === false) {
+      return;
     }
     else checkUser();
   }
@@ -48,18 +50,26 @@ const Home = ({ location }) => {
           <div className="text-center mb-4">
             <h2>Join Chatroom</h2>
           </div>
-          <Form onSubmit={(e) => handleJoinRoom(e)}>
+          <Form noValidate validated={isValidated} onSubmit={(e) => handleJoinRoom(e)}>
             <Form.Group className="mb-3 mt-2">
               <Form.Control type="text"
                 placeholder="Username"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)} />
+                onChange={(e) => setUsername(e.target.value)}
+                required />
+              <Form.Control.Feedback type="invalid">
+                Please enter your username
+              </Form.Control.Feedback>
             </Form.Group>
             {!isDirectRoomId && <Form.Group className="mb-3 mt-2">
               <Form.Control type="text"
-                placeholder="RoomID"
+                placeholder="Room ID"
                 value={roomId}
-                onChange={(e) => setRoomId(e.target.value)} />
+                onChange={(e) => setRoomId(e.target.value)}
+                required />
+              <Form.Control.Feedback type="invalid">
+                Please enter your room id
+              </Form.Control.Feedback>
             </Form.Group>
             }
             <div className="d-grid gap-2 mt-5">
