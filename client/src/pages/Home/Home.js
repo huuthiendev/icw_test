@@ -3,12 +3,12 @@ import { Form, Button, Container, Row, Col, Spinner } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import "./styles.css";
 import Constants from "../../utils/Constants";
-import queryString from 'query-string';
-import Swal from 'sweetalert2';
+import queryString from "query-string";
+import Swal from "sweetalert2";
 
 const Home = ({ location }) => {
-  const [username, setUsername] = useState('');
-  const [roomId, setRoomId] = useState('');
+  const [username, setUsername] = useState("");
+  const [roomId, setRoomId] = useState("");
   const [isLoading, setLoading] = useState(false);
   const history = useHistory();
   const [isDirectRoomId, setIsDirectRoomId] = useState(false);
@@ -35,7 +35,7 @@ const Home = ({ location }) => {
     setLoading(true);
     var userInfo = { username: username.trim(), roomId: roomId.trim() };
     fetch(Constants.API_ENDPOINT + Constants.API_CHECK_USER_IN_ROOM, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(userInfo)
     }).then(data => data.json())
       .then(data => {
@@ -43,8 +43,8 @@ const Home = ({ location }) => {
         if (data.errorCode) {
           Swal.fire({
             text: data.message,
-            icon: 'warning',
-            confirmButtonColor: '#5DB075',
+            icon: "warning",
+            confirmButtonColor: "#5DB075",
           });
         }
         else history.push({ pathname: "/chat-room", userInfo });
@@ -81,7 +81,7 @@ const Home = ({ location }) => {
             }
             <div className="d-grid gap-2 mt-5">
               <Button className="btn-join" variant="success" type="submit">
-                {isLoading ? <Spinner animation="border" size="sm" className="mx-2"></Spinner> : 'JOIN'}
+                {isLoading ? <Spinner animation="border" size="sm" className="mx-2"></Spinner> : "JOIN"}
               </Button>
             </div>
           </Form>
